@@ -2,6 +2,8 @@ from yahoo_fin import stock_info as si
 from time import time
 from datetime import datetime
 
+import os;
+
 class colors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -18,9 +20,11 @@ class colors:
 tags = input("").split(" ")
 
 t = time()
+clear = lambda: os.system('cls')
 while 1:
     # print(time() - t)
     if (time() - t) > 5:
+        clear()
         for tick in tags:
             print(f"{tick.upper()}\t\t{si.get_live_price(tick)}")
         t = time()
